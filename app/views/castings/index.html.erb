@@ -16,8 +16,20 @@
 
       <% @castings.each do |casting| %>
       <tr>
-        <td><%= casting.movies.title %></td>
-        <td><%= casting.actor.actor_name %></td>
+        <td>
+          <% if casting.movies.present? %>
+            <a href="/movies/<%= casting.movies.id %>">
+              <%= casting.movies.title %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if casting.actor.present? %>
+            <a href="/actors/<%= casting.actor.id %>">
+              <%= casting.actor.actor_name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/castings/<%= casting.id %>" class="btn btn-primary">Show</a>
           <a href="/castings/<%= casting.id %>/edit" class="btn btn-warning">Edit</a>
